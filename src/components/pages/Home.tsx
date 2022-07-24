@@ -14,7 +14,7 @@ export const Home: FC = memo(() => {
     <>
       <FormContainer>
         <h3>GraphQL API</h3>
-        {/* <Input placeholder="リポジトリ対象ユーザ入力" /> */}
+        <Input placeholder="リポジトリ対象ユーザ入力" />
         <MainButton onClick={onClickFetchCsv}>GraphQL API</MainButton>
       </FormContainer>
     </>

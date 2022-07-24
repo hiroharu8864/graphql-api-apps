@@ -43,7 +43,7 @@ const ResultComponent = () => {
   );
 };
 
-export const GraphQLFetchCSV: FC = memo(() => {
+export const GraphQLFetch: FC = memo(() => {
   const navigate = useNavigate();
   const onClickHome = useCallback(() => {
     navigate("/");
