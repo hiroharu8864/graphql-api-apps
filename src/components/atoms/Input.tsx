@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 type Props = {
   placeholder: string;
+  value: string;
+  onChange: () => void;
 };
 
 const SInput = styled.input`
@@ -14,6 +16,13 @@ const SInput = styled.input`
 `;
 
 export const Input: FC<Props> = memo((Props) => {
-  const { placeholder = "" } = Props;
-  return <SInput type="text" placeholder={placeholder} />;
+  const { placeholder = "", value, onChange } = Props;
+  return (
+    <SInput
+      type="text"
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
+  );
 });
