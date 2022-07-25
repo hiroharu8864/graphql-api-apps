@@ -1,42 +1,37 @@
-import { ChangeEvent, FC, memo, useCallback, useState } from "react";
+import { ChangeEvent, FC, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+
 import { FormContainer } from "../molecules/FormContainer";
 import { MainButton } from "../atoms/MainButton";
 import { Input } from "../atoms/Input";
+import { textReposState } from "../../store/textReposState";
 
 export const Home: FC = memo(() => {
-  /** Recoil設定 */
-  const [reposName, setReposName] = useState("");
+  const [reposName, setReposName] = useRecoilState(textReposState);
 
   const onChangeReposName = (event: ChangeEvent<HTMLInputElement>) => {
     setReposName(event.target.value);
   };
 
   const navigate = useNavigate();
-  const onClickFetchCsv = useCallback(() => {
+  const onClickFetch = useCallback(() => {
     navigate("/fetch");
-  }, [navigate]);
-  // const onClickPassValue = useCallback(() => {
-  //   navigate("/passvalue", { state: { reposName: { reposName } } });
-  // }, [reposName, navigate]);
-  const onClickRecoilRequest = useCallback(() => {
-    navigate("/recoilrequest");
   }, [navigate]);
 
   return (
     <>
       <FormContainer>
-        <h3>GraphQL API</h3>
-        <p>「{reposName}」</p>
+        <h1>GitHub GraphQL API</h1>
+        <h2>「{reposName}」</h2>
         <p>のpublicリポジトリを取得します。</p>
         <Input
           value={reposName}
           onChange={onChangeReposName}
           placeholder="リポジトリ対象ユーザ入力"
         />
-        <MainButton onClick={onClickFetchCsv}>GraphQL API</MainButton>
+        <MainButton onClick={onClickFetch}>GraphQL API</MainButton>
         {/* <MainButton onClick={onClickPassValue}>Pass Value Test</MainButton> */}
-        <MainButton onClick={onClickRecoilRequest}>Recoil TEST</MainButton>
       </FormContainer>
     </>
   );
