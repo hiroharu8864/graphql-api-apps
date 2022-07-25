@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const reposState = atom({
+export const userStoreRepositotyName = atom({
   key: "userStoreRepositotyName",
   defalult: ""
 });
