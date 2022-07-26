@@ -1,15 +1,20 @@
 import { FC, memo, Suspense, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { CSVLink } from "react-csv";
+import { useRecoilValue } from "recoil";
 import moment from "moment";
 
 import { useGetRepos } from "../../hooks/useGetRepos";
 import { FormContainer } from "../molecules/FormContainer";
 import { MainButton } from "../atoms/MainButton";
 import { TestPage } from "../pages/TestPage";
+import { dataReposResponse } from "../../store/dataReposResponse";
 
 const ResultComponent = () => {
-  const { data, error } = useGetRepos();
+  // const { data, error } = useGetRepos();
+  const data = useRecoilValue(dataReposResponse);
+  console.log(data);
+
   /**
    * 空白２文字で整形して出力
    * 取得対象のオブジェクト階層を指定して、JSON展開
