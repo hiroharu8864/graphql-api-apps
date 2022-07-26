@@ -12,7 +12,7 @@ const ResultComponent = () => {
   const { data, error } = useGetRepos();
   const [resData, setResData] = useRecoilState(dataReposResponse);
   setResData(data);
-  console.log(resData);
+  // console.log(resData);
 
   return (
     <>
