@@ -6,6 +6,7 @@ import moment from "moment";
 import { useGetRepos } from "../../hooks/useGetRepos";
 import { FormContainer } from "../molecules/FormContainer";
 import { MainButton } from "../atoms/MainButton";
+import { TestPage } from "../pages/TestPage";
 
 const ResultComponent = () => {
   const { data, error } = useGetRepos();
@@ -37,7 +38,9 @@ const ResultComponent = () => {
   return (
     <>
       {data.repositoryOwner ? (
-        <h3>CSVリンク</h3>
+        <>
+          <h3>CSVリンク</h3>
+        </>
       ) : (
         <p>該当ユーザのリポジトリはありません。</p>
       )}

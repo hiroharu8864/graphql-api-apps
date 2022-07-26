@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetRepos } from "../../hooks/useGetRepos";
 import { FormContainer } from "../molecules/FormContainer";
 import { MainButton } from "../atoms/MainButton";
+import { CsvLinkDisplay } from "../pages/CsvLinkDisplay";
 
 const ResultComponent = () => {
   const { data, error } = useGetRepos();
@@ -11,7 +12,10 @@ const ResultComponent = () => {
   return (
     <>
       {data.repositoryOwner ? (
-        <h3>リポジトリ一覧</h3>
+        <>
+          <h3>リポジトリ一覧</h3>
+          <CsvLinkDisplay />
+        </>
       ) : (
         <p>該当ユーザのリポジトリはありません。</p>
       )}
