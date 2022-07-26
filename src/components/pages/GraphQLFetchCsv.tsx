@@ -4,10 +4,8 @@ import { CSVLink } from "react-csv";
 import { useRecoilValue } from "recoil";
 import moment from "moment";
 
-import { useGetRepos } from "../../hooks/useGetRepos";
 import { FormContainer } from "../molecules/FormContainer";
 import { MainButton } from "../atoms/MainButton";
-import { TestPage } from "../pages/TestPage";
 import { dataReposResponse } from "../../store/dataReposResponse";
 
 const ResultComponent = () => {
