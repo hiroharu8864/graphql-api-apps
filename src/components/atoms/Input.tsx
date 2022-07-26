@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 type Props = {
   placeholder: string;
+  maxlength: string;
   value: string;
   onChange: () => void;
 };
@@ -16,9 +17,10 @@ const SInput = styled.input`
 `;
 
 export const Input: FC<Props> = memo((Props) => {
-  const { placeholder = "", value, onChange } = Props;
+  const { placeholder = "", maxlength, value, onChange } = Props;
   return (
     <SInput
+      maxLength={maxlength}
       type="text"
       value={value}
       onChange={onChange}

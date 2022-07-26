@@ -14,7 +14,7 @@ const ResultComponent = () => {
    * 取得対象のオブジェクト階層を指定して、JSON展開
    */
   const dataReposJson = JSON.stringify(
-    data?.repositoryOwner.repositories.edges,
+    data?.repositoryOwner?.repositories?.edges,
     null,
     2
   );
@@ -36,6 +36,11 @@ const ResultComponent = () => {
 
   return (
     <>
+      {data.repositoryOwner ? (
+        <h3>CSVリンク</h3>
+      ) : (
+        <p>該当ユーザのリポジトリはありません。</p>
+      )}
       <CSVLink data={csvdata} headers={headers} filename={`${now}.csv`}>
         CSV Files Download
       </CSVLink>
@@ -51,10 +56,7 @@ export const GraphQLFetchCsv: FC = memo(() => {
   return (
     <>
       <FormContainer>
-        <h3>Result CSV Files</h3>
-        <p>APIデータ取得後、リンク出力</p>
-        <br />
-
+        <h3>Result</h3>
         <Suspense fallback={<p>...データ取得中</p>}>
           <ResultComponent />
         </Suspense>

@@ -18,6 +18,9 @@ export const Home: FC = memo(() => {
   const onClickFetch = useCallback(() => {
     navigate("/fetch");
   }, [navigate]);
+  const onClickFetchCsv = useCallback(() => {
+    navigate("/fetchcsv");
+  }, [navigate]);
 
   return (
     <>
@@ -26,12 +29,13 @@ export const Home: FC = memo(() => {
         <h2>「{reposName}」</h2>
         <p>のpublicリポジトリを取得します。</p>
         <Input
+          maxlength="20"
           value={reposName}
           onChange={onChangeReposName}
           placeholder="リポジトリ対象ユーザ入力"
         />
-        <MainButton onClick={onClickFetch}>GraphQL API</MainButton>
-        {/* <MainButton onClick={onClickPassValue}>Pass Value Test</MainButton> */}
+        <MainButton onClick={onClickFetch}>API出力結果確認</MainButton>
+        <MainButton onClick={onClickFetchCsv}>API出力結果CSV出力</MainButton>
       </FormContainer>
     </>
   );

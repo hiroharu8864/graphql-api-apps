@@ -10,7 +10,7 @@ const SFormContainer = styled.div`
   margin-top: 16px;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 90%;
   align-items: center;
   box-shadow: 2px 2px 4px rgb(93, 93, 93);
   background-color: rgb(242, 200, 200);

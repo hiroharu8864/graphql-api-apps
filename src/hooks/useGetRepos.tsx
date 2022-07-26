@@ -19,13 +19,13 @@ query loginUserRepository($loginUser: String!, $firstFetchNums: Int!) {
   }
 }
 `;
-const firstFetchNums = 100;
+const first = 100;
 
 export const useGetRepos = () => {
   const loginUserReposName = useRecoilValue(textReposState);
-  console.log(loginUserReposName);
+  // console.log(loginUserReposName);
 
-  const access_token = "token";
+  const access_token = "ghp_token";
   const client = new GraphQLClient("https://api.github.com/graphql", {
     headers: {
       Authorization: `bearer ${access_token}`,
@@ -35,10 +35,10 @@ export const useGetRepos = () => {
   });
 
   const { data, error } = useSWR<GitHubRepos>(
-    [getLoginUserReposQuery, loginUserReposName, firstFetchNums],
-    (query, loginUser, first) =>
+    [getLoginUserReposQuery, loginUserReposName, first],
+    (query, loginUser, firstFetchNums) =>
       client.request(query, {
-        loginUserReposName: loginUser,
+        loginUser: loginUserReposName,
         firstFetchNums: first
       }),
     {

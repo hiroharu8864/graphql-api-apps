@@ -7,13 +7,16 @@ import { MainButton } from "../atoms/MainButton";
 
 const ResultComponent = () => {
   const { data, error } = useGetRepos();
-  console.log(data);
-  console.log(error);
 
   return (
     <>
-      <h1>のリポジトリ</h1>
-      {data?.repositoryOwner.repositories.edges.map((repos) => (
+      {data.repositoryOwner ? (
+        <h3>リポジトリ一覧</h3>
+      ) : (
+        <p>該当ユーザのリポジトリはありません。</p>
+      )}
+
+      {data?.repositoryOwner?.repositories.edges.map((repos) => (
         <ul key={repos.node.name}>
           <li>{repos.node.name}</li>
           <li>{repos.node.createdAt}</li>
@@ -31,10 +34,7 @@ export const GraphQLFetch: FC = memo(() => {
   return (
     <>
       <FormContainer>
-        <h3>Result CSV Files</h3>
-        <p>APIデータ取得後、リンク出力</p>
-        <br />
-
+        <h3>Result</h3>
         <Suspense fallback={<p>...データ取得中</p>}>
           <ResultComponent />
         </Suspense>
