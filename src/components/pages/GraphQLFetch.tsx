@@ -1,6 +1,6 @@
 import { FC, memo, Suspense, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import { useGetRepos } from "../../hooks/useGetRepos";
 import { FormContainer } from "../molecules/FormContainer";
@@ -9,10 +9,7 @@ import { CsvLinkDisplay } from "../pages/CsvLinkDisplay";
 import { dataReposResponse } from "../../store/dataReposResponse";
 
 const ResultComponent = () => {
-  const { data, error } = useGetRepos();
-  const [resData, setResData] = useRecoilState(dataReposResponse);
-  setResData(data);
-  // console.log(resData);
+  const { data } = useGetRepos();
 
   return (
     <>
@@ -40,6 +37,7 @@ export const GraphQLFetch: FC = memo(() => {
   const onClickHome = useCallback(() => {
     navigate("/");
   }, [navigate]);
+
   return (
     <>
       <FormContainer>

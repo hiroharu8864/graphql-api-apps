@@ -9,9 +9,7 @@ import { MainButton } from "../atoms/MainButton";
 import { dataReposResponse } from "../../store/dataReposResponse";
 
 const ResultComponent = () => {
-  // const { data, error } = useGetRepos();
   const data = useRecoilValue(dataReposResponse);
-  console.log(data);
 
   /**
    * 空白２文字で整形して出力

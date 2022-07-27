@@ -1,9 +1,10 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { GraphQLClient } from "graphql-request";
 import useSWR from "swr";
 
 import { GitHubRepos } from "../type/GitHubRepos";
 import { textReposState } from "../store/textReposState";
+import { dataReposResponse } from "../store/dataReposResponse";
 
 const getLoginUserReposQuery = `
 query loginUserRepository($loginUser: String!, $firstFetchNums: Int!) {
@@ -23,9 +24,8 @@ const first = 100;
 
 export const useGetRepos = () => {
   const loginUserReposName = useRecoilValue(textReposState);
-  // console.log(loginUserReposName);
 
-  const access_token = "ghp_token";
+  const access_token = "token";
   const client = new GraphQLClient("https://api.github.com/graphql", {
     headers: {
       Authorization: `bearer ${access_token}`,
@@ -46,5 +46,8 @@ export const useGetRepos = () => {
     }
   );
 
+  /** APIのResponseをRecoilに格納 */
+  const [resData, setResData] = useRecoilState(dataReposResponse);
+  setResData(data);
   return { data, error };
 };
