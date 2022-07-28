@@ -1,12 +1,10 @@
 import { FC, memo, Suspense, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 
 import { useGetRepos } from "../../hooks/useGetRepos";
 import { FormContainer } from "../molecules/FormContainer";
 import { MainButton } from "../atoms/MainButton";
 import { CsvLinkDisplay } from "../pages/CsvLinkDisplay";
-import { dataReposResponse } from "../../store/dataReposResponse";
 
 const ResultComponent = () => {
   const { data } = useGetRepos();

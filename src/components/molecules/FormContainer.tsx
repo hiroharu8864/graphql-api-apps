@@ -6,6 +6,7 @@ type Props = {
 };
 
 const SFormContainer = styled.div`
+  font-family: Georgia, serif;
   margin: auto;
   margin-top: 16px;
   display: flex;
