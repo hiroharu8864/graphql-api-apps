@@ -40,9 +40,7 @@ export const TestPage: FC = memo(() => {
           onBlur={handleBlur}
           placeholder="リポジトリ対象ユーザ入力"
         />
-        <button onClick={onClickFetch} disabled={!buttonDisabled}>
-          API出力結果確認
-        </button>
+
         <MainButtonWithDisabled
           onClick={onClickFetch}
           disabled={!buttonDisabled}

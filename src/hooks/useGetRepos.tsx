@@ -25,7 +25,8 @@ const first = 100;
 export const useGetRepos = () => {
   const loginUserReposName = useRecoilValue(textReposState);
 
-  const access_token = "ghp_token";
+  // const access_token = "ghp_token";
+  const access_token = process.env.GITHUB_TOKEN;
   const client = new GraphQLClient("https://api.github.com/graphql", {
     headers: {
       Authorization: `bearer ${access_token}`,
